@@ -1,0 +1,6 @@
+create table Suppliers(supplier_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, supplier_name VARCHAR, city VARCHAR, country VARCHAR);
+create table Categories(category_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, category_name VARCHAR(100), description VARCHAR);
+create table Products(product_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, product_name VARCHAR, supplier_id INT references suppliers NOT NULL, categories_id INT references categories NOT NULL, price float4);
+insert into categories(category_name, description) values('Beverages', 'Soft drinks, coffees, teas, beers, and ales'), ('Condiments', 'Sweet and savory sauces, relishes, spreads, and seasonings'), ('Confections', 'Desserts, candies, and sweet breads'), ('Dairy Products', 'Cheeses'), ('Grains/Cereals', 'Breads, crackers, pasta, and cereal');
+insert into suppliers(supplier_name, city, country) values ('Exotic Liquid', 'London', 'UK'), ('New Orleans Cajun Delights', 'New Orleans', 'USA'), ('Grandma Kelly’s Homestead', 'Ann Arbor', 'USA'), ('Tokyo Traders', 'Tokyo', 'Japan'), ('Cooperativa de Quesos ‘Las Cabras’', 'Oviedo', 'Spain');
+insert into products(product_name, supplier_id, categories_id, price) VALUES('Chais', 1, 1, 18.00), ('Chang', 1, 1, 19.00), ('Aniseed Syrup', 1, 2, 10.00), ('Chef Anton’s Cajun Seasoning', 2, 2, 22.00), ('Chef Anton’s Gumbo Mix', 2, 2, 21.35);
